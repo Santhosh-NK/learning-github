@@ -1,8 +1,12 @@
 name: activity types and Event filters
 on: 
     pull_request:
-        branches: main
-        types: closed
+        branches: main  #branch filter
+        types: closed #activity types
+        paths-ignore: '.github/workflows/*'
+    push:
+      branches: main
+      paths-ignore: '.github/workflows/*'
 jobs:
     jobs-1:
         runs-on: ubuntu-latest        
