@@ -6,7 +6,7 @@ on:
         paths-ignore: '.github/workflows/*'
     push:
       branches: main
-      paths-ignore: '.github/workflows/*'
+     # paths-ignore: '.github/workflows/*'
 jobs:
     jobs-1:
         runs-on: ubuntu-latest        
