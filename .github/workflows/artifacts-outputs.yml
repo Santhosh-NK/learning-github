@@ -1,9 +1,11 @@
 name: artifacts
-on: workflow_dispatch
+on: push
 jobs:
     job-artifact:
         runs-on: ubuntu-latest
         steps:
+            - name: checkout
+              uses: actions/checkout@v4
             - name: artifacts
               uses: actions/upload-artifact@v4
               with:
