@@ -11,3 +11,5 @@ jobs:
         - name: show working directory
           run: ls -l
         - run: pwd
+        - run: mkdir santhosh
+        - run: ls -l 
