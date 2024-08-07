@@ -6,6 +6,7 @@ jobs:
         steps:
             - name: checkout
               uses: actions/checkout@v4
+            - run: npm install
             - name: artifacts
               uses: actions/upload-artifact@v4
               with:
