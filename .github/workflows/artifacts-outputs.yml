@@ -3,6 +3,8 @@ on: push
 jobs:
     job-artifact:
         runs-on: ubuntu-latest
+        outputs:
+            script-print: ${{steps.publish.outputs.scriptfile}}
         steps:
             - name: checkout
               uses: actions/checkout@v4
@@ -16,4 +18,13 @@ jobs:
               uses: actions/download-artifact@v4
               with:
                 name: node-modules
+            - name: output-getting
+              id: publish
+              run: find . -type f -type "*.html" -execdir echo "script-file={}" >>$GITHUB_OUTPUTS \;
+    job-outputs:
+        needs: job-artifact
+        runs-on: ubuntu-latest
+        steps:
+            - name: outputs-outside
+              run: echo "${{needs.job-artifact.outputs.script-print}}"
               
