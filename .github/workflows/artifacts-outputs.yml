@@ -4,7 +4,7 @@ jobs:
     job-artifact:
         runs-on: ubuntu-latest
         outputs:
-            script-print: ${{steps.publish.outputs.scriptfile}}
+            script-print: ${{steps.publish.outputs.script-file}}
         steps:
             - name: checkout
               uses: actions/checkout@v4
