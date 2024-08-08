@@ -4,7 +4,7 @@ jobs:
     job-artifact:
         runs-on: ubuntu-latest
         outputs:
-            script-print: ${{steps.publish.outputs.scriptfile}}
+            script-print: ${{steps.publish.outputs.script-file}}
         steps:
             - name: checkout
               uses: actions/checkout@v4
@@ -20,7 +20,9 @@ jobs:
                 name: node-modules
             - name: output-getting
               id: publish
-              run: find . -type f -name "*.html" -exec echo '::set-output name=script-file::{}'
+              #run: find . -type f -name "*.html" -exec echo '::set-output name=script-file::{}'
+             # run: find . -type f -name "*.txt" -exec echo 'script-file={} >> $GITHUB_OUTPUTS ' \;
+              run: find . -type f -name "*.html" -execdir echo 'script-file={} >>$GITHUB_OUTPUTS' \;
     job-outputs:
         needs: job-artifact
         runs-on: ubuntu-latest
