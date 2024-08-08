@@ -22,7 +22,8 @@ jobs:
               id: publish
               #run: find . -type f -name "*.html" -exec echo '::set-output name=script-file::{}'
              # run: find . -type f -name "*.txt" -exec echo 'script-file={} >> $GITHUB_OUTPUTS ' \;
-              run: find . -type f -name "*.html" -execdir echo 'script-file={} >>$GITHUB_OUTPUTS' \;
+              #run: find . -type f -name "*.html" -execdir echo 'script-file={} >>$GITHUB_OUTPUTS' \;
+              run: html_files=$(find . -type f -name "*.html" -exec echo 'script-file={}' \;) echo "script-file=$html_files" >> $GITHUB_ENV
     job-outputs:
         needs: job-artifact
         runs-on: ubuntu-latest
